@@ -1,0 +1,8 @@
+namespace Codevoid.MusicHall
+{
+    [default_interface]
+    runtimeclass MainUI : Windows.UI.Xaml.Controls.UserControl
+    {
+        MainUI();
+    }
+}
