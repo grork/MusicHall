@@ -4,6 +4,7 @@
 
 using namespace winrt;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Interop;
 
 namespace winrt::Codevoid::MusicHall::implementation
 {
@@ -12,8 +13,8 @@ namespace winrt::Codevoid::MusicHall::implementation
         InitializeComponent();
     }
 
-    void MainUI::ClickHandler(IInspectable const&, RoutedEventArgs const&)
+    void MainUI::Navigate(TypeName const& pageType, IInspectable const& parameter)
     {
-        myButton().Content(box_value(L"Temporary Placeholder"));
+        this->NavigationFrame().Navigate(pageType, parameter);
     }
 }

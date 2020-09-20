@@ -55,10 +55,21 @@ void App::BeginBackgroundInitializationIfNeeded()
 
 void App::HandleLaunchArguments(Window const& window, hstring const& /*arguments*/)
 {
+    MusicHall::MainUI mainUI = window.Content().try_as<MusicHall::MainUI>();
+
     // Theres no content in the Window, so we need to create our UI
     if (window.Content() == nullptr)
     {
-        window.Content(winrt::make<MainUI>());
+        mainUI = winrt::make<MainUI>();
+        window.Content(mainUI);
+
+        // Since this is the default navigation (We just created the UI)
+        // perform a default navigation
+        Interop::TypeName pageType;
+        pageType.Name = L"Codevoid.MusicHall.PlaceholderPage";
+        pageType.Kind = Interop::TypeKind::Primitive;
+
+        mainUI.Navigate(pageType, box_value(L"First Page Placeholder"));
     }
 
     // TODO: Handle other activation / launch argument behaviours

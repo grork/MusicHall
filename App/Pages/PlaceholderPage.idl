@@ -1,0 +1,11 @@
+namespace Codevoid.MusicHall
+{
+    [default_interface]
+    runtimeclass PlaceholderPage : Windows.UI.Xaml.Controls.Page
+    {
+        PlaceholderPage();
+        void OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs e);
+
+        String PlaceholderText{ get; };
+    }
+}

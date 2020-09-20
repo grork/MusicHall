@@ -4,5 +4,6 @@ namespace Codevoid.MusicHall
     runtimeclass MainUI : Windows.UI.Xaml.Controls.UserControl
     {
         MainUI();
+        void Navigate(Windows.UI.Xaml.Interop.TypeName pageType, IInspectable parameter);
     }
 }

@@ -8,7 +8,7 @@ namespace winrt::Codevoid::MusicHall::implementation
     {
         MainUI();
 
-        void ClickHandler(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
+        void Navigate(Windows::UI::Xaml::Interop::TypeName const& pageType, Windows::Foundation::IInspectable const& parameter);
     };
 }
 

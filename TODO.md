@@ -10,10 +10,10 @@
 
 ## App Skeleton
 
-- [ ] Create Default control/main layout
-- [ ] Handle Navigation to placeholder Navigation Items/Pages
-  - [ ] Single page w/ passed in param for display
-  - [ ] Use Xaml's `TypeName` for navigation for decoupling
+- [X] Create Default control/main layout
+- [X] Handle Navigation to placeholder Navigation Items/Pages
+  - [X] Single page w/ passed in param for display
+  - [X] Use Xaml's `TypeName` for navigation for decoupling
 - [ ] Add Secret Button Key handler for getting to a Special Test page
 - [ ] Extended View into title bar
   - [ ] Create some sort of header for window-control area to look sensible
