@@ -65,10 +65,7 @@ void App::HandleLaunchArguments(Window const& window, hstring const& /*arguments
 
         // Since this is the default navigation (We just created the UI)
         // perform a default navigation
-        Interop::TypeName pageType;
-        pageType.Name = L"Codevoid.MusicHall.PlaceholderPage";
-        pageType.Kind = Interop::TypeKind::Primitive;
-
+        Interop::TypeName pageType{ L"Codevoid.MusicHall.PlaceholderPage", Interop::TypeKind::Primitive };
         mainUI.Navigate(pageType, box_value(L"First Page Placeholder"));
     }
 

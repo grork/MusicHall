@@ -1,0 +1,10 @@
+namespace Codevoid.MusicHall
+{
+    runtimeclass AlbumControl : Windows.UI.Xaml.Controls.Control
+    {
+        AlbumControl();
+
+        static Windows.UI.Xaml.DependencyProperty AlbumNameProperty{ get; };
+        String AlbumName;
+    }
+}

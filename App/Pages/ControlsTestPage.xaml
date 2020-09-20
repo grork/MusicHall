@@ -1,0 +1,23 @@
+﻿<Page x:Class="Codevoid.MusicHall.ControlsTestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:Codevoid.MusicHall">
+
+    <ScrollViewer>
+        <StackPanel Margin="24,24,0,0"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical">
+            <TextBlock Text="Album Control"
+                       Style="{StaticResource SubheaderTextBlockStyle}" />
+            <Border Width="430"
+                    Height="430"
+                    Background="LightGray"
+                    HorizontalAlignment="Left"
+                    Margin="0,24,0,0">
+                <local:AlbumControl Background="Orange"
+                                    AlbumName="The White Album" />
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

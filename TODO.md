@@ -1,5 +1,7 @@
-## Skeleton Project
+## General Todo
+- [ ] Move `#includes` into the PCH for common winrt types
 
+## Skeleton Project
 - [x] Create sample Project (Name: `MusicHall`)
 - [x] Update / Configure the manifest / Project info to look correct for that
   name
@@ -9,43 +11,45 @@
 - [x] Push to Repo on GH
 
 ## App Skeleton
-
+- [ ] Extended View into title bar
+  - [ ] Create some sort of header for window-control area to look sensible
+- [x] Add click handler to navigate to controls test page (using placeholder)
+- [x] Add isolated controls test page
+- [x] Add Secret button on ctrl being pressed to navigate to controls test page
 - [x] Create Default control/main layout
 - [x] Handle Navigation to placeholder Navigation Items/Pages
   - [x] Single page w/ passed in param for display
   - [x] Use Xaml's `TypeName` for navigation for decoupling
 - [x] Add Secret Button Key handler for getting to a Special Test page
-- [ ] Extended View into title bar
-  - [ ] Create some sort of header for window-control area to look sensible
-- [ ] Add Empty Albums page with �Page left intentionally blank�
-- [ ] Add click handler to navigate to single Album page (using placeholder
+- [x] Add Empty Albums page with �Page left intentionally blank�
   page)
-- [ ] Add isolated test page for a single album control
-- [ ] Add Secret button on ctrl being pressed to navigate to single item page
-- [ ] Create simple Album Custom Control w/ Template, add to test page
 - [x] Create an Icon Tile Set based on a music note icon (Use
   https://marketplace.visualstudio.com/items?itemName=shenchauhan.UWPTileGenerator?)
   - [x] If it fails/isn't good quality, use Sketch template 
 
 ## Loading Load Placeholder Data
-
 - [ ] Define a simple JSON Format containing the information needed
 - [ ] Create Basic Album Data object that just exposes a Title, Artist, Release
   Year, Album URL (place kitten)
 - [ ] Load JSON on startup async
 
 ## Implement Album Control
-
+- [x] Create Boilerplate Album Custom Control w/ Template, add to controls test page
 - [ ] Create Wrapper control to support hover / keyboard focus
   - [ ] Keyboard Focus Visual State
   - [ ] Hover Visual State
-    - [ ] On Demand Creation of hover state?
+  - [ ] Content Control Wrapper for arbitary child content
+  - [ ] Add to Test Page
+- [x] Create Basic Album Templated Control
+    - [x] Album Name Property
+    - [ ] Artist Name Property
+    - [ ] Art URI Property
+    - [ ] Simple ugly template
 - [ ] Add Placeholder that can be used as generic background while loading
 - [ ] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text
 
 ## Application UI
-
 - [ ] Add Navigation View
 - [ ] Update the IsTitleBarAutoPaddingEnabled to false
 - [ ] Create data class to be used for menu item data
@@ -55,7 +59,6 @@
   data source
 
 ## Nice-To-Have UI
-
 - [ ] Allow grouping by Artist
 - [ ] Allow grouping by A-Z
 - [ ] Allow Sorting by Album Name

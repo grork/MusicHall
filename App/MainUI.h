@@ -22,6 +22,7 @@ namespace winrt::Codevoid::MusicHall::implementation
         /// </param>
         void Navigate(Windows::UI::Xaml::Interop::TypeName const& pageType, Windows::Foundation::IInspectable const& parameter);
         void HandlePlaceholderButtonClick(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
+        void HandleNavigateToControlsTestPageButtonClick(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
         void HandleFrameNavigation(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::Navigation::NavigationEventArgs const& args);
 
         private:

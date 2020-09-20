@@ -1,0 +1,8 @@
+namespace Codevoid.MusicHall
+{
+    [default_interface]
+    runtimeclass ControlsTestPage : Windows.UI.Xaml.Controls.Page
+    {
+        ControlsTestPage();
+    }
+}

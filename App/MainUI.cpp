@@ -39,7 +39,13 @@ namespace winrt::Codevoid::MusicHall::implementation
         this->NavigateToPlaceholderPage(unbox_value_or(button.Tag(), L"Unknown"));
     }
 
-    void MainUI::HandleFrameNavigation(IInspectable const& /*source*/, NavigationEventArgs const& /*args*/)
+    void MainUI::HandleNavigateToControlsTestPageButtonClick(IInspectable const& /*sender*/, RoutedEventArgs const& /*args*/)
+    {
+        TypeName albumsType{ L"Codevoid.MusicHall.ControlsTestPage", TypeKind::Primitive };
+        this->Navigate(albumsType, nullptr);
+    }
+
+    void MainUI::HandleFrameNavigation(IInspectable const& /*sender*/, NavigationEventArgs const& /*args*/)
     {
         if (this->NavigationFrame().CanGoBack())
         {
@@ -101,10 +107,7 @@ namespace winrt::Codevoid::MusicHall::implementation
 
     void MainUI::NavigateToPlaceholderPage(hstring const& placeholderText)
     {
-        Interop::TypeName pageType;
-        pageType.Name = L"Codevoid.MusicHall.PlaceholderPage";
-        pageType.Kind = Interop::TypeKind::Primitive;
-
+        Interop::TypeName pageType{ L"Codevoid.MusicHall.PlaceholderPage", TypeKind::Primitive };
         this->Navigate(pageType, box_value(placeholderText));
     }
 }

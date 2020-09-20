@@ -22,10 +22,9 @@
                     VerticalAlignment="Bottom"
                     Visibility="Collapsed"
                     Orientation="Horizontal">
-            <Button Content="Album Item Test Page"
+            <Button Content="Controls Test Page"
                     Style="{StaticResource BasicButtonWithMargins}"
-                    Tag="Album Placeholder"
-                    Click="HandlePlaceholderButtonClick" />
+                    Click="HandleNavigateToControlsTestPageButtonClick" />
             <Button Content="Placeholder Page"
                     Tag="Generic Placeholder"
                     Click="HandlePlaceholderButtonClick"

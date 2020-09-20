@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "App.xaml.g.h"
+#include "Controls\AlbumControl.h"
 
 namespace winrt::Codevoid::MusicHall::implementation
 {
