@@ -6,6 +6,7 @@ using namespace std;
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Input;
 using namespace Windows::UI::Xaml::Media::Imaging;
 
 namespace winrt::Codevoid::MusicHall::implementation
@@ -15,6 +16,49 @@ namespace winrt::Codevoid::MusicHall::implementation
     {
         this->ListenForImageLoadingStates();
         this->SetImageSource(this->AlbumArtUri());
+    }
+
+    void AlbumControl::OnGotFocus(RoutedEventArgs const& /*args*/)
+    {
+        VisualStateManager::GoToState(*this, L"Focused", false);
+    }
+
+    void AlbumControl::OnLostFocus(RoutedEventArgs const& /*args*/)
+    {
+        VisualStateManager::GoToState(*this, L"Unfocused", false);
+    }
+
+    void AlbumControl::OnPointerEntered(PointerRoutedEventArgs const& /*args*/)
+    {
+        auto projected_element = FocusManager::GetFocusedElement().try_as<MusicHall::AlbumControl>();
+        if (projected_element == nullptr)
+        {
+            // the focused element isn't something we know about, so nothing we can do
+            return;
+        }
+
+        // Clear focus on the other focused element
+        projected_element.OnLostFocus(nullptr);
+
+        VisualStateManager::GoToState(*this, L"Focused", false);
+    }
+    
+    void AlbumControl::OnPointerExited(PointerRoutedEventArgs const& /*args*/)
+    {
+        if (this->FocusState() == FocusState::Keyboard)
+        {
+            // If we're exiting, but we still have keyboard focus leave focus on that item
+            return;
+        }
+
+        VisualStateManager::GoToState(*this, L"Unfocused", false);
+    }
+
+
+
+    void AlbumControl::ConfigureItemForRecycling()
+    {
+        this->HandleImageFailed(nullptr, nullptr);
     }
 
     void AlbumControl::ListenForImageLoadingStates()

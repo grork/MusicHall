@@ -19,7 +19,8 @@
                             Margin="16"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Stretch"
-                            ItemTemplate="{StaticResource AlbumItemTemplate}">
+                            ItemTemplate="{StaticResource AlbumItemTemplate}"
+                            ElementClearing="HandleElementClearing">
 
             <muxc:ItemsRepeater.Layout>
                 <muxc:UniformGridLayout MinItemWidth="200"

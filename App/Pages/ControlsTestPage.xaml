@@ -41,7 +41,9 @@
             </Border>
 
             <TextBlock Text="Smaller Size" />
-            <Border Style="{StaticResource UseCaseWrapperBorderStyle}">
+            <Border Width="200"
+                    Height="275"
+                    Style="{StaticResource UseCaseWrapperBorderStyle}">
                 <local:AlbumControl Background="Orange"
                                     AlbumName="The White Album"
                                     ArtistName="The Beatles"

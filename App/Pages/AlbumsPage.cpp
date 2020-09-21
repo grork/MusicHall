@@ -1,10 +1,10 @@
 ﻿#include "pch.h"
+#include "..\Controls\AlbumControl.h"
 #include "AlbumsPage.h"
 #include "AlbumsPage.g.cpp"
 #include "AlbumInformation.h"
 
-#include <chrono>
-
+using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace std;
 using namespace winrt;
 using namespace Windows::Foundation;
@@ -25,27 +25,38 @@ namespace winrt::Codevoid::MusicHall::implementation
         co_await winrt::resume_background();
 
         auto data = winrt::single_threaded_observable_vector<MusicHall::AlbumInformation>();
-        for (int i = 0; i < 1000; i++)
+        for (int idx = 0; idx < 1000; idx += 1)
         {
+            auto itemIndexAsString = to_wstring(idx);
             auto item = make<AlbumInformation>();
-            
-            
-            auto itemIndexAsString = to_wstring(i);
             item.Title(L"Album " + itemIndexAsString);
             item.Artist(L"Artist " + itemIndexAsString);
             
             // Skip every 11th image to show no-art scenario
-            if ((i % 11) != 0)
+            if (((idx % 11) != 0) || idx == 0)
             {
-                Uri placeholder_image{ L"https://loremflickr.com/300/300?lock=" + itemIndexAsString };
+                Uri placeholder_image{ L"https://loremflickr.com/300/300/cat?lock=" + itemIndexAsString };
                 item.CoverArt(placeholder_image);
             }
 
-            item.Year(i);
+            item.Year(idx);
             data.Append(item);
         }
 
         co_await ui_thread;
         this->ItemsContainer().ItemsSource(data);
+    }
+
+    void AlbumsPage::HandleElementClearing(ItemsRepeater const& /*sender*/, ItemsRepeaterElementClearingEventArgs const& args)
+    {
+        auto projection_albumControl = args.Element().try_as<MusicHall::AlbumControl>();
+        if (projection_albumControl == nullptr)
+        {
+            // This wasn't the droid we were looking for
+            return;
+        }
+
+        implementation::AlbumControl* albumControl = get_self<implementation::AlbumControl>(projection_albumControl);
+        albumControl->ConfigureItemForRecycling();
     }
 }

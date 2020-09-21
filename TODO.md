@@ -34,12 +34,9 @@ Asset generator
 
 ## Implement Album Control
 - [x] Create Boilerplate Album Custom Control w/ Template, add to controls test page
-- [ ] Create Wrapper control to support hover / keyboard focus
-  - [ ] Keyboard Focus Visual State
-  - [ ] Hover Visual State
-  - [ ] Content Control Wrapper for arbitary child content
-  - [ ] Add to Test Page
-- [x] Create Basic Album Templated Control
+  [x] Create Basic Album Templated Control
+    - [x] Keyboard Focus Visual State
+    - [x] Hover Visual State
     - [x] Album Name Property
     - [x] Artist Name Property
     - [x] Art URI Property
@@ -47,7 +44,7 @@ Asset generator
     - [x] Simple ugly template
 - [x] Add Placeholder that can be used as generic background while loading
 - [x] Add Album Tempalte & Basic layout to the Albums Page
-- [ ] Extend Album control with Recycling from the ItemsRepeater to handle image
+- [x] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text
 
 ## Application UI
@@ -67,3 +64,4 @@ Asset generator
 - [ ] Word Wheel search
 - [ ] Consider: Restyling the `ScrollViewer` so that the scrollbar is inset to
   allow it to go under the navigation bar
+- [ ] Support Scroll restoration when navigating back to Albums Page

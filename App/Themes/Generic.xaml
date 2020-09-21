@@ -6,10 +6,12 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AlbumControl">
-                    <Border BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="4">
+                    <Grid HorizontalAlignment="Stretch"
+                          VerticalAlignment="Stretch">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="LoadingStates">
                                 <VisualState x:Name="ImageLoadFailed">
@@ -25,44 +27,75 @@
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Unfocused">
+                                    <VisualState.Setters>
+                                        <Setter Target="Backdrop.Visibility" Value="Collapsed" />
+                                        <Setter Target="PlayIconContainer.Visibility" Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Focused">
+                                    <VisualState.Setters>
+                                        <Setter Target="Backdrop.Visibility" Value="Visible" />
+                                        <Setter Target="PlayIconContainer.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
 
-                            <Image Grid.Row="0"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch"
-                                   Stretch="UniformToFill">
-                                <Image.Source>
-                                    <BitmapImage x:Name="ImageSource"
-                                                 UriSource="{TemplateBinding AlbumArtUri}" />
-                                </Image.Source>
-                            </Image>
-                            <Border x:Name="FallbackIcon"
-                                    Grid.Row="0"
-                                    Margin="8"
-                                    Visibility="Visible"
-                                    Background="{StaticResource SystemChromeLowColor}"
-                                    CornerRadius="4">
-                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                        <Border x:Name="Backdrop"
+                                Grid.RowSpan="2"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                Visibility="Collapsed" />
+                        <Border Grid.Row="0"
+                                Margin="8"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Visibility="Visible"
+                                Background="{StaticResource SystemChromeLowColor}"
+                                CornerRadius="4">
+                            <Grid>
+                                <Image x:Name="AlbumArt"
+                                       Grid.Row="0"
+                                       HorizontalAlignment="Stretch"
+                                       VerticalAlignment="Stretch"
+                                       Stretch="UniformToFill">
+                                    <Image.Source>
+                                        <BitmapImage x:Name="ImageSource"
+                                                     UriSource="{TemplateBinding AlbumArtUri}" />
+                                    </Image.Source>
+                                </Image>
+
+                                <FontIcon x:Name="FallbackIcon"
+                                          FontFamily="Segoe MDL2 Assets"
                                           Glyph="&#xE93C;"
                                           FontSize="100" />
-                            </Border>
-                            <StackPanel Grid.Row="1"
-                                        Margin="8,0,8,8">
-                                <TextBlock Text="{TemplateBinding AlbumName}"
-                                           Style="{StaticResource BaseTextBlockStyle}" />
-                                <TextBlock Text="{TemplateBinding ArtistName}"
-                                           Style="{StaticResource BodyTextBlockStyle}" />
-                                <TextBlock Text="{TemplateBinding ReleaseYearAsString}"
-                                           Foreground="{StaticResource SystemBaseMediumLowColor}" />
-                            </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Grid x:Name="PlayIconContainer"
+                              Visibility="Collapsed">
+                            <Ellipse Width="72"
+                                     Height="72"
+                                     Fill="{StaticResource SystemControlAcrylicElementBrush}" />
+                            <FontIcon FontFamily="Segoe MDL2 Assets"
+                                      FontSize="52"
+                                      Glyph="&#xE768;" />
                         </Grid>
-                    </Border>
+
+                        <StackPanel Grid.Row="1"
+                                    Margin="8,0,8,8">
+                            <TextBlock Text="{TemplateBinding AlbumName}"
+                                       Style="{StaticResource BaseTextBlockStyle}" />
+                            <TextBlock Text="{TemplateBinding ArtistName}"
+                                       Style="{StaticResource BodyTextBlockStyle}" />
+                            <TextBlock Text="{TemplateBinding ReleaseYearAsString}"
+                                       Foreground="{StaticResource SystemBaseMediumLowColor}" />
+                        </StackPanel>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -9,6 +9,7 @@ using namespace Windows::UI::Xaml;
 using namespace Windows::UI::Xaml::Controls::Primitives;
 using namespace Windows::UI::Xaml::Navigation;
 using namespace Windows::UI::Xaml::Interop;
+using namespace Windows::System;
 
 namespace winrt::Codevoid::MusicHall::implementation
 {
@@ -62,13 +63,25 @@ namespace winrt::Codevoid::MusicHall::implementation
         this->NavigationFrame().Navigate(pageType, parameter);
     }
 
-    void MainUI::HandleWindowKeyDown(CoreWindow const& /*sender*/, KeyEventArgs const& /*args*/)
+    void MainUI::HandleWindowKeyDown(CoreWindow const& /*sender*/, KeyEventArgs const& args)
     {
+        // Only want to show debug view when control is pressed
+        if (args.VirtualKey() != VirtualKey::Control)
+        {
+            return;
+        }
+
         VisualStateManager::GoToState(*this, L"ShowDebugButtons", false);
     }
 
-    void MainUI::HandleWindowKeyUp(CoreWindow const& /*sender*/, KeyEventArgs const& /*args*/)
+    void MainUI::HandleWindowKeyUp(CoreWindow const& /*sender*/, KeyEventArgs const& args)
     {
+        // Only want to hide the debug control if it was ctrl that was released
+        if (args.VirtualKey() != VirtualKey::Control)
+        {
+            return;
+        }
+
         VisualStateManager::GoToState(*this, L"HideDebugButtons", false);
     }
 

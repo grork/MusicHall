@@ -10,9 +10,18 @@ namespace winrt::Codevoid::MusicHall::implementation
     struct AlbumControl : AlbumControlT<AlbumControl>
     {
         AlbumControl()
-        { DefaultStyleKey(winrt::box_value(L"Codevoid.MusicHall.AlbumControl")); }
+        {
+            DefaultStyleKey(winrt::box_value(L"Codevoid.MusicHall.AlbumControl"));
+            this->UseSystemFocusVisuals(true);
+        }
 
         void OnApplyTemplate();
+        void OnGotFocus(Windows::UI::Xaml::RoutedEventArgs const& args);
+        void OnLostFocus(Windows::UI::Xaml::RoutedEventArgs const& args);
+        void OnPointerEntered(Windows::UI::Xaml::Input::PointerRoutedEventArgs const& args);
+        void OnPointerExited(Windows::UI::Xaml::Input::PointerRoutedEventArgs const& args);
+
+        void ConfigureItemForRecycling();
 
 #pragma region AlbumName Property
         winrt::hstring AlbumName();
