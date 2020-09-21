@@ -6,24 +6,50 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:AlbumControl">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
+                    <Border BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <StackPanel>
-                            <Image Width="300"
-                                   Height="300">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="LoadingStates">
+                                <VisualState x:Name="ImageLoadFailed">
+                                    <VisualState.Setters>
+                                        <Setter Target="FallbackIcon.Visibility" Value="Visible" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+
+                            <Image Grid.Row="0"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   Stretch="Uniform">
                                 <Image.Source>
                                     <BitmapImage x:Name="ImageSource"
                                                  UriSource="{TemplateBinding AlbumArtUri}" />
                                 </Image.Source>
                             </Image>
-                            <TextBlock Text="{TemplateBinding AlbumName}"
-                                       Style="{StaticResource BaseTextBlockStyle}" />
-                            <TextBlock Text="{TemplateBinding ArtistName}"
-                                       Style="{StaticResource BodyTextBlockStyle}" />
-                            <TextBlock Text="{TemplateBinding ReleaseYearAsString}"
-                                       Foreground="{StaticResource SystemBaseMediumLowColor}" />
-                        </StackPanel>
+                            <Border x:Name="FallbackIcon"
+                                    Grid.Row="0"
+                                    Visibility="Collapsed"
+                                    Background="{TemplateBinding Background}">
+                                <FontIcon FontFamily="Segoe MDL2 Assets"
+                                          Glyph="&#xE93C;"
+                                          FontSize="100" />
+                            </Border>
+                            <StackPanel Grid.Row="1">
+                                <TextBlock Text="{TemplateBinding AlbumName}"
+                                           Style="{StaticResource BaseTextBlockStyle}" />
+                                <TextBlock Text="{TemplateBinding ArtistName}"
+                                           Style="{StaticResource BodyTextBlockStyle}" />
+                                <TextBlock Text="{TemplateBinding ReleaseYearAsString}"
+                                           Foreground="{StaticResource SystemBaseMediumLowColor}" />
+                            </StackPanel>
+                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

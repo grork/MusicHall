@@ -68,8 +68,12 @@ namespace winrt::Codevoid::MusicHall::implementation
         static Windows::UI::Xaml::DependencyProperty ReleaseYearAsStringProperty();
     private:
         static Windows::UI::Xaml::DependencyProperty s_releaseYearAsStringProperty;
-    public:
 #pragma endregion
+
+    private:
+        void ListenForImagesFailingToLoad();
+        void HandleImageFailed(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::ExceptionRoutedEventArgs const& args);
+        winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage::ImageFailed_revoker m_imageFailedRevoker;
     };
 }
 

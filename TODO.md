@@ -45,7 +45,7 @@ Asset generator
     - [x] Art URI Property
     - [x] Release Year
     - [x] Simple ugly template
-- [ ] Add Placeholder that can be used as generic background while loading
+- [x] Add Placeholder that can be used as generic background while loading
 - [ ] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text
 

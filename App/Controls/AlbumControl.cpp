@@ -13,7 +13,27 @@ namespace winrt::Codevoid::MusicHall::implementation
 
     void AlbumControl::OnApplyTemplate()
     {
+        this->ListenForImagesFailingToLoad();
         this->SetImageSource(this->AlbumArtUri());
+    }
+
+    void AlbumControl::ListenForImagesFailingToLoad()
+    {
+        auto imageSource = this->GetTemplateChild(L"ImageSource").try_as<BitmapImage>();
+        if (imageSource == nullptr)
+        {
+            // We don't have the image. Either because we've been called too early
+            // (e.g. no template applied), or because someone left it out of the
+            // teimplate. Either way, nothing to do
+            return;
+        }
+
+        m_imageFailedRevoker = imageSource.ImageFailed(auto_revoke, { this, &AlbumControl::HandleImageFailed });
+    }
+
+    void AlbumControl::HandleImageFailed(IInspectable const& /*sender*/, ExceptionRoutedEventArgs const& /*args*/)
+    {
+        VisualStateManager::GoToState(*this, L"ImageLoadFailed", false);
     }
 
 #pragma region AlbumName Property

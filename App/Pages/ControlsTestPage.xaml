@@ -2,6 +2,10 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:local="using:Codevoid.MusicHall">
+    <Page.Resources>
+        <Style TargetType="TextBlock"
+               BasedOn="{StaticResource BaseTextBlockStyle}" />
+    </Page.Resources>
 
     <ScrollViewer>
         <StackPanel Margin="24,24,0,0"
@@ -10,16 +14,41 @@
                     Orientation="Vertical">
             <TextBlock Text="Album Control"
                        Style="{StaticResource SubheaderTextBlockStyle}" />
+            <TextBlock Text="Simple Case" />
             <Border Width="430"
                     Height="430"
-                    Margin="0,24,0,0"
+                    Margin="0,12,0,12"
                     HorizontalAlignment="Left"
                     Background="LightGray">
-                <local:AlbumControl x:Name="SimpleAlbumControl"
-                                    Background="Orange"
+                <local:AlbumControl Background="Orange"
                                     AlbumName="The White Album"
                                     ArtistName="The Beatles"
                                     AlbumArtUri="https://placekitten.com/300/300"
+                                    ReleaseYear="1968" />
+            </Border>
+            <TextBlock Text="Failing Image" />
+            <Border Width="430"
+                    Height="430"
+                    Margin="0,12,0,12"
+                    HorizontalAlignment="Left"
+                    Background="LightGray">
+                <local:AlbumControl Background="Orange"
+                                    AlbumName="The White Album"
+                                    ArtistName="The Beatles"
+                                    AlbumArtUri="https://nope.codevoid.net"
+                                    ReleaseYear="1968" />
+            </Border>
+
+            <TextBlock Text="Smaller Size" />
+            <Border Width="150"
+                    Height="150"
+                    Margin="0,12,0,12"
+                    HorizontalAlignment="Left"
+                    Background="LightGray">
+                <local:AlbumControl Background="Orange"
+                                    AlbumName="The White Album"
+                                    ArtistName="The Beatles"
+                                    AlbumArtUri="https://nope.codevoid.net"
                                     ReleaseYear="1968" />
             </Border>
         </StackPanel>
