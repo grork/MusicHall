@@ -12,11 +12,15 @@
                        Style="{StaticResource SubheaderTextBlockStyle}" />
             <Border Width="430"
                     Height="430"
-                    Background="LightGray"
+                    Margin="0,24,0,0"
                     HorizontalAlignment="Left"
-                    Margin="0,24,0,0">
-                <local:AlbumControl Background="Orange"
-                                    AlbumName="The White Album" />
+                    Background="LightGray">
+                <local:AlbumControl x:Name="SimpleAlbumControl"
+                                    Background="Orange"
+                                    AlbumName="The White Album"
+                                    ArtistName="The Beatles"
+                                    AlbumArtUri="https://placekitten.com/300/300"
+                                    ReleaseYear="1968" />
             </Border>
         </StackPanel>
     </ScrollViewer>

@@ -9,7 +9,21 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <TextBlock Text="{TemplateBinding AlbumName}" />
+                        <StackPanel>
+                            <Image Width="300"
+                                   Height="300">
+                                <Image.Source>
+                                    <BitmapImage x:Name="ImageSource"
+                                                 UriSource="{TemplateBinding AlbumArtUri}" />
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{TemplateBinding AlbumName}"
+                                       Style="{StaticResource BaseTextBlockStyle}" />
+                            <TextBlock Text="{TemplateBinding ArtistName}"
+                                       Style="{StaticResource BodyTextBlockStyle}" />
+                            <TextBlock Text="{TemplateBinding ReleaseYearAsString}"
+                                       Foreground="{StaticResource SystemBaseMediumLowColor}" />
+                        </StackPanel>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

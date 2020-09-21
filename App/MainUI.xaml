@@ -17,18 +17,26 @@
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"
                Navigated="HandleFrameNavigation" />
-        <StackPanel x:Name="DebugButtons"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom"
-                    Visibility="Collapsed"
-                    Orientation="Horizontal">
-            <Button Content="Controls Test Page"
+        <Grid x:Name="DebugButtons"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Bottom"
+              Visibility="Collapsed"
+              Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    HorizontalAlignment="Right"
+                    Content="Controls Test Page"
                     Style="{StaticResource BasicButtonWithMargins}"
                     Click="HandleNavigateToControlsTestPageButtonClick" />
-            <Button Content="Placeholder Page"
+            <Button Grid.Column="1"
+                    HorizontalAlignment="Left"
+                    Content="Placeholder Page"
                     Tag="Generic Placeholder"
                     Click="HandlePlaceholderButtonClick"
                     Style="{StaticResource BasicButtonWithMargins}" />
-        </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

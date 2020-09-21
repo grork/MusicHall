@@ -6,5 +6,17 @@ namespace Codevoid.MusicHall
 
         static Windows.UI.Xaml.DependencyProperty AlbumNameProperty{ get; };
         String AlbumName;
+
+        static Windows.UI.Xaml.DependencyProperty ArtistNameProperty{ get; };
+        String ArtistName;
+
+        static Windows.UI.Xaml.DependencyProperty AlbumArtUriProperty{ get; };
+        Windows.Foundation.Uri AlbumArtUri;
+
+        static Windows.UI.Xaml.DependencyProperty ReleaseYearProperty{ get; };
+        Int32 ReleaseYear;
+
+        static Windows.UI.Xaml.DependencyProperty ReleaseYearAsStringProperty { get; };
+        String ReleaseYearAsString;
     }
 }

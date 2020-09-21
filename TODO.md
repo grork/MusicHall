@@ -23,9 +23,8 @@
 - [x] Add Secret Button Key handler for getting to a Special Test page
 - [x] Add Empty Albums page with �Page left intentionally blank�
   page)
-- [x] Create an Icon Tile Set based on a music note icon (Use
-  https://marketplace.visualstudio.com/items?itemName=shenchauhan.UWPTileGenerator?)
-  - [x] If it fails/isn't good quality, use Sketch template 
+- [x] Create an Icon Tile Set based on a music note icon using built in
+Asset generator
 
 ## Loading Load Placeholder Data
 - [ ] Define a simple JSON Format containing the information needed
@@ -42,9 +41,10 @@
   - [ ] Add to Test Page
 - [x] Create Basic Album Templated Control
     - [x] Album Name Property
-    - [ ] Artist Name Property
-    - [ ] Art URI Property
-    - [ ] Simple ugly template
+    - [x] Artist Name Property
+    - [x] Art URI Property
+    - [x] Release Year
+    - [x] Simple ugly template
 - [ ] Add Placeholder that can be used as generic background while loading
 - [ ] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text

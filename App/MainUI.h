@@ -1,8 +1,6 @@
 ﻿#pragma once
 
 #include "MainUI.g.h"
-#include <winrt/Windows.UI.Core.h>
-#include <winrt/Windows.UI.Input.h>
 
 namespace winrt::Codevoid::MusicHall::implementation
 {
