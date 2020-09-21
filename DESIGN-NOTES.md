@@ -1,3 +1,80 @@
+# General Architecture
+The intent here is to create just enough separation between components that
+things aren't tightly coupled, but also don't strive to be "general purpose".
+
+## Project Level
+At the project level, the `App` is intended to contain the UI / App lifecycle.
+In a full implementation, there would also be a `DataStore` project which
+contained the logic for the database, non-UI bound business logic (Sync, DRM
+management, basic service wrapper).
+
+For interacting with a complex service, including things like account management,
+authentication, payments, service caching, there would likely be another discrete
+project.
+
+## UI Components
+There are four main compoinents: `App`, `MainUI`, `AlbumControl`, and `AlbumsPage`.
+
+### App
+This is a simple lifecycle manager for the UWP model to handle app launch etc.
+In this implementaiton, it has explicit knowledge of the first page to navigate
+too, but in a deeper implementation this would be handed off to another component.
+
+Note, that this class can become quite complex given it's need to handle multiple
+launch scenarios (Tile, URL, Prelaunch, Background), as well as general app lifecycle
+such as suspend & resume.
+
+### MainUI
+This houses the navigation `Frame`, and provides simple navigation using `NavigationView`.
+It is also the entry point for many system-UI interactions (aka Back Navigation),
+which requires hooks into multiple places to conform to the expecations of windows users.
+
+In this implementation I also chose to put a 'debug' menu behind the 'ctrl' key
+to make it easy to test some specific scenarios without relying on the rest of the app
+infrastructure. (Test Page for controls, and a simple forward navigation)
+
+### AlbumControl
+This is a templated control that represents an 'Album'. It contains enough to represent
+what is needed to display an album, and handle the basic UI affordances one expects
+of an item in a grid (Keyboard Focus, Hover State, Click/Invocation).
+
+Note that this control dervies from `ButtonBase` to get the basic click/tap/keyboard
+methods for 'free', but minimizing the impact of attempting to re-style/derive from
+an actual `Button`
+
+**Note**, this is currently missing the appropriate `AutomationPeer` implementation
+to provide a sensible & viable accessbility interface for screen readers and other
+assitive technologies
+
+### AlbumsPage
+This is a simple wrapper page containing an [`ItemsRepeater`](https://docs.microsoft.com/en-us/uwp/api/microsoft.ui.xaml.controls.itemsrepeater?view=winui-2.4), that loads some (fake) data into a data object that
+can then be bound in `DataTemplate`.
+
+Of note, this page keeps the item layout (in `AlbumControl`) separate from the
+behaviour by being the component that handles the invocation of an item in the
+list, and performing destination navigation.
+
+In a perfect world, this would would be an `ICommand` implementation sparing this
+page from being aware of where it was going.
+
+Also of note, this performs forwarding of element recycling reset to the `AlbumsControl`.
+See below (Element Recycling) for more details.
+
+## Language Choice
+With C++, there are three dialects for UWP development: "naked" C++, C++/CX,
+and C++/WinRT. When it comes to building UI, "naked" C++ is not really viable.
+This stems from the extreme boilerplate/legwork required to support the
+various interfaces.
+
+This leaves C++/CX & C++/WinRT. From a 'click and go', C++/CX provides the
+quickest start, but it's effectively deprecated, and hides a little *too* much
+of the details from you.
+
+C++/WinRT is on the cusp of being mature, and has brought an *almost* perfect
+balance between "naked" & CX. Given that it is the annointed solution, I chose
+to use C++/WinRT for this project.
+
+# Specific Items of Note
 ## Navigation
 Default implementations / guidance on navigation in XAML results in tight
 bindings between any code that initiates navigation, and the destination of that

@@ -15,8 +15,7 @@ To be able to build & run this project, you'll need
 - Visual Studio 2019 (Version 16.7 or higher), with UWP, and C++ tools
 - [C++/WinRT VS Extension v2.0 or
   higher](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
-
-* [Windows SDK
+- [Windows SDK
   10.0.19041.0](https://marketplace.visualstudio.com/items?itemName=CppWinRTTeam.cppwinrt101804264)
 
 ## Building
