@@ -1,5 +1,5 @@
 ## General Todo
-- [ ] Move `#includes` into the PCH for common winrt types
+- [x] Move `#includes` into the PCH for common winrt types
 
 ## Skeleton Project
 - [x] Create sample Project (Name: `MusicHall`)
@@ -46,6 +46,7 @@ Asset generator
 - [x] Add Album Tempalte & Basic layout to the Albums Page
 - [x] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text
+- [x] Add Automation Peer for correct accessibility information
 
 ## Application UI
 - [ ] Add Navigation View

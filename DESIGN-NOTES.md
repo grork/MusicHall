@@ -27,16 +27,48 @@ get the binding to correctly transfer to the image. After giving up, I chanaged
 to manual value transfer on the dependency property change, and in
 `OnApplyTemplate` to handle template lifecycle woes.
 
-Additional Wrinkle: Can't bind a int into a `TextBlock::Text` (it's a string)
-so created a `ReleaseYearAsString` property to project a converted string.
-Could have done it with a converter, but decided to be a little dirty for
-simplicity reasons.
+Additional Wrinkle: Can't bind a int into a `TextBlock::Text` (it's a string) so
+created a `ReleaseYearAsString` property to project a converted string. Could
+have done it with a converter, but decided to be a little dirty for simplicity
+reasons.
+
+### Album Control Focus / Hover
+Keyboard Focus, and Hover state are important. But they are tied to two
+logically different things -- behaviour & layout. To enable the behaviour, you
+have to wire up event handling, handle some state changes, and what not. But you
+don't want that to be intertwined with the visuals.
+
+XAML makes this easier with the `VisualStateManager`. In our usage here, we can
+push the state management/logic for handling focus into the control code, and
+then leverage the template to do the heavy lifting of the visuals.
+
+Within infinite time, I would have liked to create some of the hover state UI on
+demand through some abstractions of the actual XAML control that would handle
+the hover state. This would allow lower memory/performance by not having the
+'idle' elements sitting in the visual tree.
+
+The need to handle some of this here, was a by product of using `ItemsRepeater`,
+rather than a "Kitchen Sink" control such as a `ListView`.
+
+## Element Recycling
+The XAML `ItemsRepeater` control is a light weight, yet capable control for
+repeating elements. It brings with it little behaviour, and allows customized
+layouts if you need the power of non-uniform layouts.
+
+It's biggest advantage is *out of the box* it comes with UI Virtualization
+inside any `ScrollViewer`. You can see this at play with the 1000 album-view
+that is very light on it's RAM usage. It does some with a trade off -- mandatory
+managment of recycling of any used control.
+
+Here, this means that the image & failed states need to be correctly reset when
+an element is recycled. You can see this in `AlbumsPage` and `AlbumControl`.
+See `ElementClearing` in `AlbumsPage`.
 
 ## Sample Data
-In the interests of focusing on the UI, rather than data, there is simple
-async data generation on navigating to the albums page, creating some
-random information that can be used in the albums control. This includes
-using loremflickr.com for the images. Sometimes images are not set to
-give an example of the no-image case. Of note the 'lock' in the URL is used to
-help keep a stable image, rather than having to reload everytime. These are
-licensed under Creative Commons licenses.
+In the interests of focusing on the UI, rather than data, there is simple async
+data generation on navigating to the albums page, creating some random
+information that can be used in the albums control. This includes using
+loremflickr.com for the images. Sometimes images are not set to give an example
+of the no-image case. Of note the 'lock' in the URL is used to help keep a
+stable image, rather than having to reload everytime. These are licensed under
+Creative Commons licenses.
