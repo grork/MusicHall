@@ -31,14 +31,11 @@ namespace winrt::Codevoid::MusicHall::implementation
     void AlbumControl::OnPointerEntered(PointerRoutedEventArgs const& /*args*/)
     {
         auto projected_element = FocusManager::GetFocusedElement().try_as<MusicHall::AlbumControl>();
-        if (projected_element == nullptr)
+        if (projected_element != nullptr)
         {
-            // the focused element isn't something we know about, so nothing we can do
-            return;
+            // Clear focus on the other focused element
+            projected_element.OnLostFocus(nullptr);
         }
-
-        // Clear focus on the other focused element
-        projected_element.OnLostFocus(nullptr);
 
         VisualStateManager::GoToState(*this, L"Focused", false);
     }

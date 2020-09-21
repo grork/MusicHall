@@ -1,6 +1,6 @@
 namespace Codevoid.MusicHall
 {
-    runtimeclass AlbumControl : Windows.UI.Xaml.Controls.Control
+    runtimeclass AlbumControl : Windows.UI.Xaml.Controls.Primitives.ButtonBase
     {
         AlbumControl();
 

@@ -9,6 +9,7 @@ using namespace std;
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::UI::Xaml;
+using namespace Windows::UI::Xaml::Interop;
 
 namespace winrt::Codevoid::MusicHall::implementation
 {
@@ -58,5 +59,18 @@ namespace winrt::Codevoid::MusicHall::implementation
 
         implementation::AlbumControl* albumControl = get_self<implementation::AlbumControl>(projection_albumControl);
         albumControl->ConfigureItemForRecycling();
+    }
+
+    void AlbumsPage::HandleAlbumClick(IInspectable const& sender, RoutedEventArgs const& /*args*/)
+    {
+        MusicHall::AlbumControl sourceAlbum = sender.try_as<MusicHall::AlbumControl>();
+        if (sourceAlbum == nullptr)
+        {
+            // This was originated on an instance of a control we don't understand
+            return;
+        }
+
+        TypeName destination{ L"Codevoid.MusicHall.PlaceholderPage", TypeKind::Primitive };
+        this->Frame().Navigate(destination, box_value(sourceAlbum.AlbumName()));
     }
 }

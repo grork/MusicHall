@@ -11,7 +11,8 @@
                                 Background="{StaticResource SystemChromeMediumLowColor}"
                                 ArtistName="{x:Bind Artist}"
                                 ReleaseYear="{x:Bind Year}"
-                                AlbumArtUri="{x:Bind CoverArt}" />
+                                AlbumArtUri="{x:Bind CoverArt}"
+                                Click="HandleAlbumClick" />
         </DataTemplate>
     </Page.Resources>
     <ScrollViewer>

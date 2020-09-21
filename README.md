@@ -25,8 +25,13 @@ Open `MusicHall.sln` from the root of this repo, select the target CPU flavour
 for your device (e.g. x86 or amd64, most likely), and hit "Build"
 
 ## Usage
-Simple navigation is as one would expect.
+Simple navigation is as one would expect with the mouse.
 
 However, by pressing "Ctrl" on your keyboard, you can see a debug menu allowing
 navigation to a test page containing standard usages of the `AlbumControl`
 making it easier to cover mutiple scenarios in one glance.
+
+### Back Navigation
+1. Button in the top left of the window
+2. Mouse back button (if you have one)
+3. OS Back Keyboard Shortcut (Win+Backspace)

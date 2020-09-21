@@ -8,6 +8,7 @@ namespace winrt::Codevoid::MusicHall::implementation
     {
         AlbumsPage();
         void HandleElementClearing(Microsoft::UI::Xaml::Controls::ItemsRepeater const& sender, Microsoft::UI::Xaml::Controls::ItemsRepeaterElementClearingEventArgs const& args);
+        void HandleAlbumClick(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
 
     private:
         Windows::Foundation::IAsyncAction LoadDataAndDisplayAsync();
