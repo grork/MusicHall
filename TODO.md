@@ -49,13 +49,14 @@ Asset generator
 - [x] Add Automation Peer for correct accessibility information
 
 ## Application UI
-- [ ] Add Navigation View
+- [x] Add Navigation View
 - [ ] Update the IsTitleBarAutoPaddingEnabled to false
 - [ ] Create data class to be used for menu item data
-- [ ] Add Basic Menu items for common navigational items in the UI
-  - [ ] Navigate to the simple placeholder page created earlier on
+- [x] Add Basic Menu items for common navigational items in the UI
+  - [x] Navigate to the simple placeholder page created earlier on
 - [ ] Update Keyboard Control Toggle to show the secret item while held using
   data source
+- [ ] Leverage Data Object created for menu Items to display selection
 
 ## Nice-To-Have UI
 - [ ] Allow grouping by Artist

@@ -2,6 +2,7 @@
 #include "MainUI.h"
 #include "MainUI.g.cpp"
 
+using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt;
 using namespace Windows::UI::Core;
 using namespace Windows::UI::Input;
@@ -56,6 +57,18 @@ namespace winrt::Codevoid::MusicHall::implementation
         {
             m_navigationManager.AppViewBackButtonVisibility(AppViewBackButtonVisibility::Collapsed);
         }
+    }
+
+    void MainUI::HandleNavigationItemInvoked(NavigationView const& /*sender*/, NavigationViewItemInvokedEventArgs const& args)
+    {
+        TypeName destination{ unbox_value<hstring>(args.InvokedItemContainer().Tag()), TypeKind::Primitive };
+        IInspectable parameter{ nullptr };
+        if (destination.Name == L"Codevoid.MusicHall.PlaceholderPage")
+        {
+            parameter = args.InvokedItemContainer().Content();
+        }
+
+        this->Navigate(destination, parameter);
     }
 
     void MainUI::Navigate(TypeName const& pageType, IInspectable const& parameter)

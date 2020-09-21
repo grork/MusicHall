@@ -61,8 +61,8 @@ that is very light on it's RAM usage. It does some with a trade off -- mandatory
 managment of recycling of any used control.
 
 Here, this means that the image & failed states need to be correctly reset when
-an element is recycled. You can see this in `AlbumsPage` and `AlbumControl`.
-See `ElementClearing` in `AlbumsPage`.
+an element is recycled. You can see this in `AlbumsPage` and `AlbumControl`. See
+`ElementClearing` in `AlbumsPage`.
 
 ## Sample Data
 In the interests of focusing on the UI, rather than data, there is simple async
@@ -72,3 +72,16 @@ loremflickr.com for the images. Sometimes images are not set to give an example
 of the no-image case. Of note the 'lock' in the URL is used to help keep a
 stable image, rather than having to reload everytime. These are licensed under
 Creative Commons licenses.
+
+## Navigation View
+The Navigation view provides a full featured, and adaptable "Application
+Navigation" UI. One downside is that supporting selection of an item requires a
+meaningful amount of boilerplate to create simple data objects that can be be
+used to tag items, associate with navigation, all to keep the selected state of
+the menu items consisten.
+
+It's also the opinion of the author that it leaves a quite a lot to be desired
+interms of giving a sense of identity to your applications -- with this control
+it stands out from the get-go that your navigation is *this* way. There are lots
+of other ways to do navigation, and this control is a little constrained in
+enabling that.
