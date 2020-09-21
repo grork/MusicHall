@@ -5,11 +5,13 @@
       xmlns:local="using:Codevoid.MusicHall">
 
     <Page.Resources>
-        <DataTemplate x:Key="AlbumItemTemplate">
-            <local:AlbumControl AlbumName="{Binding}"
+        <DataTemplate x:Key="AlbumItemTemplate"
+                      x:DataType="local:AlbumInformation">
+            <local:AlbumControl AlbumName="{x:Bind Title}"
                                 Background="{StaticResource SystemChromeMediumLowColor}"
-                                ArtistName="Something"
-                                ReleaseYear="1981" />
+                                ArtistName="{x:Bind Artist}"
+                                ReleaseYear="{x:Bind Year}"
+                                AlbumArtUri="{x:Bind CoverArt}" />
         </DataTemplate>
     </Page.Resources>
     <ScrollViewer>

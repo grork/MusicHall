@@ -28,9 +28,9 @@ Asset generator
 - [x] Add ItemsRepeater & Simple Text Template to Albums Page
 
 ## Loading Load Placeholder Data
-- [ ] Create Basic Album Data object that just exposes a Title, Artist, Release
+- [x] Create Basic Album Data object that just exposes a Title, Artist, Release
   Year, Album URL (place kitten)
-- [ ] Generate Async on Startup, and Bind into Items Repeater
+- [x] Generate Async on Startup, and Bind into Items Repeater
 
 ## Implement Album Control
 - [x] Create Boilerplate Album Custom Control w/ Template, add to controls test page

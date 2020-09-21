@@ -31,3 +31,12 @@ Additional Wrinkle: Can't bind a int into a `TextBlock::Text` (it's a string)
 so created a `ReleaseYearAsString` property to project a converted string.
 Could have done it with a converter, but decided to be a little dirty for
 simplicity reasons.
+
+## Sample Data
+In the interests of focusing on the UI, rather than data, there is simple
+async data generation on navigating to the albums page, creating some
+random information that can be used in the albums control. This includes
+using loremflickr.com for the images. Sometimes images are not set to
+give an example of the no-image case. Of note the 'lock' in the URL is used to
+help keep a stable image, rather than having to reload everytime. These are
+licensed under Creative Commons licenses.

@@ -1,0 +1,12 @@
+namespace Codevoid.MusicHall
+{
+    runtimeclass AlbumInformation
+    {
+        AlbumInformation();
+
+        String Title{ get; set; };
+        String Artist{ get; set; };
+        Int32 Year{ get; set; };
+        Windows.Foundation.Uri CoverArt{ get; set; };
+    }
+}
