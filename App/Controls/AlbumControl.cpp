@@ -13,11 +13,11 @@ namespace winrt::Codevoid::MusicHall::implementation
 
     void AlbumControl::OnApplyTemplate()
     {
-        this->ListenForImagesFailingToLoad();
+        this->ListenForImageLoadingStates();
         this->SetImageSource(this->AlbumArtUri());
     }
 
-    void AlbumControl::ListenForImagesFailingToLoad()
+    void AlbumControl::ListenForImageLoadingStates()
     {
         auto imageSource = this->GetTemplateChild(L"ImageSource").try_as<BitmapImage>();
         if (imageSource == nullptr)
@@ -29,11 +29,17 @@ namespace winrt::Codevoid::MusicHall::implementation
         }
 
         m_imageFailedRevoker = imageSource.ImageFailed(auto_revoke, { this, &AlbumControl::HandleImageFailed });
+        m_imageOpenedRevoker = imageSource.ImageOpened(auto_revoke, { this, &AlbumControl::HandleImageOpened });
     }
 
     void AlbumControl::HandleImageFailed(IInspectable const& /*sender*/, ExceptionRoutedEventArgs const& /*args*/)
     {
         VisualStateManager::GoToState(*this, L"ImageLoadFailed", false);
+    }
+
+    void AlbumControl::HandleImageOpened(IInspectable const& /*sender*/, RoutedEventArgs const& /*args*/)
+    {
+        VisualStateManager::GoToState(*this, L"ImageLoadSucceeded", false);
     }
 
 #pragma region AlbumName Property

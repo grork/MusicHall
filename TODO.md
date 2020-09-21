@@ -25,12 +25,12 @@
   page)
 - [x] Create an Icon Tile Set based on a music note icon using built in
 Asset generator
+- [x] Add ItemsRepeater & Simple Text Template to Albums Page
 
 ## Loading Load Placeholder Data
-- [ ] Define a simple JSON Format containing the information needed
 - [ ] Create Basic Album Data object that just exposes a Title, Artist, Release
   Year, Album URL (place kitten)
-- [ ] Load JSON on startup async
+- [ ] Generate Async on Startup, and Bind into Items Repeater
 
 ## Implement Album Control
 - [x] Create Boilerplate Album Custom Control w/ Template, add to controls test page
@@ -46,6 +46,7 @@ Asset generator
     - [x] Release Year
     - [x] Simple ugly template
 - [x] Add Placeholder that can be used as generic background while loading
+- [x] Add Album Tempalte & Basic layout to the Albums Page
 - [ ] Extend Album control with Recycling from the ItemsRepeater to handle image
   loading / display of some text
 

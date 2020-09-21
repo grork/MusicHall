@@ -158,6 +158,10 @@
       <DependentUpon>Controls\AlbumControl.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Pages\AlbumsPage.h">
+      <DependentUpon>Pages\AlbumsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Pages\ControlsTestPage.h">
       <DependentUpon>Pages\ControlsTestPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -179,6 +183,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="MainUI.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\AlbumsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\ControlsTestPage.xaml">
@@ -252,6 +259,10 @@
       <DependentUpon>Controls\AlbumControl.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Pages\AlbumsPage.cpp">
+      <DependentUpon>Pages\AlbumsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Pages\ControlsTestPage.cpp">
       <DependentUpon>Pages\ControlsTestPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -280,6 +291,10 @@
     </Midl>
     <Midl Include="MainUI.idl">
       <DependentUpon>MainUI.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="Pages\AlbumsPage.idl">
+      <DependentUpon>Pages\AlbumsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Midl>
     <Midl Include="Pages\ControlsTestPage.idl">
       <DependentUpon>Pages\ControlsTestPage.xaml</DependentUpon>

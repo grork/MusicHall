@@ -1,0 +1,9 @@
+namespace Codevoid.MusicHall
+{
+    [default_interface]
+    runtimeclass AlbumsPage : Windows.UI.Xaml.Controls.Page
+    {
+        AlbumsPage();
+        Microsoft.UI.Xaml.Controls.ItemsRepeater ItemsContainer{ get; };
+    }
+}

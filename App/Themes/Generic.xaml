@@ -7,12 +7,21 @@
             <Setter.Value>
                 <ControlTemplate TargetType="local:AlbumControl">
                     <Border BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="4">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="LoadingStates">
                                 <VisualState x:Name="ImageLoadFailed">
                                     <VisualState.Setters>
                                         <Setter Target="FallbackIcon.Visibility" Value="Visible" />
+                                        <Setter Target="AlbumArt.Visibility" Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="ImageLoadSucceeded">
+                                    <VisualState.Setters>
+                                        <Setter Target="FallbackIcon.Visibility" Value="Collapsed" />
+                                        <Setter Target="AlbumArt.Visibility" Value="Visible" />
                                     </VisualState.Setters>
                                 </VisualState>
                             </VisualStateGroup>
@@ -27,7 +36,7 @@
                             <Image Grid.Row="0"
                                    HorizontalAlignment="Stretch"
                                    VerticalAlignment="Stretch"
-                                   Stretch="Uniform">
+                                   Stretch="UniformToFill">
                                 <Image.Source>
                                     <BitmapImage x:Name="ImageSource"
                                                  UriSource="{TemplateBinding AlbumArtUri}" />
@@ -35,13 +44,16 @@
                             </Image>
                             <Border x:Name="FallbackIcon"
                                     Grid.Row="0"
-                                    Visibility="Collapsed"
-                                    Background="{TemplateBinding Background}">
+                                    Margin="8"
+                                    Visibility="Visible"
+                                    Background="{StaticResource SystemChromeLowColor}"
+                                    CornerRadius="4">
                                 <FontIcon FontFamily="Segoe MDL2 Assets"
                                           Glyph="&#xE93C;"
                                           FontSize="100" />
                             </Border>
-                            <StackPanel Grid.Row="1">
+                            <StackPanel Grid.Row="1"
+                                        Margin="8,0,8,8">
                                 <TextBlock Text="{TemplateBinding AlbumName}"
                                            Style="{StaticResource BaseTextBlockStyle}" />
                                 <TextBlock Text="{TemplateBinding ArtistName}"

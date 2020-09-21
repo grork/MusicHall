@@ -71,9 +71,11 @@ namespace winrt::Codevoid::MusicHall::implementation
 #pragma endregion
 
     private:
-        void ListenForImagesFailingToLoad();
+        void ListenForImageLoadingStates();
         void HandleImageFailed(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::ExceptionRoutedEventArgs const& args);
+        void HandleImageOpened(Windows::Foundation::IInspectable const& sender, Windows::UI::Xaml::RoutedEventArgs const& args);
         winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage::ImageFailed_revoker m_imageFailedRevoker;
+        winrt::Windows::UI::Xaml::Media::Imaging::BitmapImage::ImageOpened_revoker m_imageOpenedRevoker;
     };
 }
 

@@ -5,6 +5,15 @@
     <Page.Resources>
         <Style TargetType="TextBlock"
                BasedOn="{StaticResource BaseTextBlockStyle}" />
+        <Style x:Key="UseCaseWrapperBorderStyle"
+               TargetType="Border">
+            <Setter Target="Height" Value="430" />
+            <Setter Target="Width" Value="430" />
+            <Setter Target="Margin" Value="0,12,0,12" />
+            <Setter Target="Padding" Value="12" />
+            <Setter Target="HorizontalAlignment" Value="Left" />
+            <Setter Target="Background" Value="LightGray" />
+        </Style>
     </Page.Resources>
 
     <ScrollViewer>
@@ -15,11 +24,7 @@
             <TextBlock Text="Album Control"
                        Style="{StaticResource SubheaderTextBlockStyle}" />
             <TextBlock Text="Simple Case" />
-            <Border Width="430"
-                    Height="430"
-                    Margin="0,12,0,12"
-                    HorizontalAlignment="Left"
-                    Background="LightGray">
+            <Border Style="{StaticResource UseCaseWrapperBorderStyle}">
                 <local:AlbumControl Background="Orange"
                                     AlbumName="The White Album"
                                     ArtistName="The Beatles"
@@ -27,11 +32,7 @@
                                     ReleaseYear="1968" />
             </Border>
             <TextBlock Text="Failing Image" />
-            <Border Width="430"
-                    Height="430"
-                    Margin="0,12,0,12"
-                    HorizontalAlignment="Left"
-                    Background="LightGray">
+            <Border Style="{StaticResource UseCaseWrapperBorderStyle}">
                 <local:AlbumControl Background="Orange"
                                     AlbumName="The White Album"
                                     ArtistName="The Beatles"
@@ -40,11 +41,7 @@
             </Border>
 
             <TextBlock Text="Smaller Size" />
-            <Border Width="150"
-                    Height="150"
-                    Margin="0,12,0,12"
-                    HorizontalAlignment="Left"
-                    Background="LightGray">
+            <Border Style="{StaticResource UseCaseWrapperBorderStyle}">
                 <local:AlbumControl Background="Orange"
                                     AlbumName="The White Album"
                                     ArtistName="The Beatles"

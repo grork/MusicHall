@@ -1,0 +1,31 @@
+﻿<Page x:Class="Codevoid.MusicHall.AlbumsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+      xmlns:local="using:Codevoid.MusicHall">
+
+    <Page.Resources>
+        <DataTemplate x:Key="AlbumItemTemplate">
+            <local:AlbumControl AlbumName="{Binding}"
+                                Background="{StaticResource SystemChromeMediumLowColor}"
+                                ArtistName="Something"
+                                ReleaseYear="1981" />
+        </DataTemplate>
+    </Page.Resources>
+    <ScrollViewer>
+        <muxc:ItemsRepeater x:Name="ItemsContainer"
+                            Margin="16"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            ItemTemplate="{StaticResource AlbumItemTemplate}">
+
+            <muxc:ItemsRepeater.Layout>
+                <muxc:UniformGridLayout MinItemWidth="200"
+                                        MinItemHeight="270"
+                                        ItemsStretch="Uniform"
+                                        MinColumnSpacing="16"
+                                        MinRowSpacing="16" />
+            </muxc:ItemsRepeater.Layout>
+        </muxc:ItemsRepeater>
+    </ScrollViewer>
+</Page>
